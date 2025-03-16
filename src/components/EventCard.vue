@@ -15,7 +15,7 @@ const props = defineProps<Event>();
     <img
       :src="props.poster"
       alt="Event poster"
-      class="w-48 h-72 object-cover rounded-xl mb-3"
+      class="w-full h-auto aspect-[2/3] object-cover rounded-xl mb-3"
     />
     <h2 class="text-base font-bold mb-3">{{ props.title }}</h2>
     <p
