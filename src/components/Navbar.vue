@@ -4,6 +4,12 @@ export default {
   data() {
     return {
       isMobileMenuOpen: false,
+      links: [
+        { title: "Home", path: "/" },
+        { title: "About", path: "/about" },
+        { title: "Services", path: "/services" },
+        { title: "Contact", path: "/contact" },
+      ],
     };
   },
   methods: {
@@ -34,28 +40,12 @@ export default {
         <!-- Navigation Links -->
         <div class="hidden md:flex items-center space-x-8">
           <button
-            @click="navigate('/')"
+            v-for="link in links"
+            :key="link.path"
+            @click="navigate(link.path)"
             class="text-gray-600 hover:text-gray-900 transition duration-300"
           >
-            Home
-          </button>
-          <button
-            @click="navigate('/about')"
-            class="text-gray-600 hover:text-gray-900 transition duration-300"
-          >
-            About
-          </button>
-          <button
-            @click="navigate('/services')"
-            class="text-gray-600 hover:text-gray-900 transition duration-300"
-          >
-            Services
-          </button>
-          <button
-            @click="navigate('/contact')"
-            class="text-gray-600 hover:text-gray-900 transition duration-300"
-          >
-            Contact
+            {{ link.title }}
           </button>
         </div>
 
@@ -84,28 +74,12 @@ export default {
     <!-- Mobile Menu -->
     <div class="md:hidden" :class="{ hidden: !isMobileMenuOpen }">
       <button
-        @click="navigate('/')"
+        v-for="link in links"
+        :key="link.path"
+        @click="navigate(link.path)"
         class="block w-full text-left py-2 px-4 text-sm hover:bg-gray-200"
       >
-        Home
-      </button>
-      <button
-        @click="navigate('/about')"
-        class="block w-full text-left py-2 px-4 text-sm hover:bg-gray-200"
-      >
-        About
-      </button>
-      <button
-        @click="navigate('/services')"
-        class="block w-full text-left py-2 px-4 text-sm hover:bg-gray-200"
-      >
-        Services
-      </button>
-      <button
-        @click="navigate('/contact')"
-        class="block w-full text-left py-2 px-4 text-sm hover:bg-gray-200"
-      >
-        Contact
+        {{ link.title }}
       </button>
     </div>
   </nav>
